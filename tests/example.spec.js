@@ -26,6 +26,9 @@ test('has title', async ({ page }) => {
 
   // clicking on Se connecter
   await page.getByTestId('login-button-submit').click();
+  
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle("Mon compte | Welcome to the Jungle");
 
   // assert the right url after login
   await expect(page).toHaveURL(setup.url);
@@ -39,8 +42,7 @@ test('has title', async ({ page }) => {
   // wait for the success message
   await page.getByText('Mise à jour réussie !').waitFor();
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle("Mon compte | Welcome to the Jungle");
+  
 });
 
 
